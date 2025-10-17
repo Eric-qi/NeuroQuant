@@ -1,0 +1,223 @@
+2025-10-14 08:03:42,337 [INFO ]  Logging file is results/NeRV_Bunny_1280x640/Bunny_e300_b1_lr0.0005_l2/Encoder_0.0M_Decoder_3.08M_Total_3.08M/network-wise_calib/hadamard-False_max-init_batch2_CW_weight0.01_brange20-2_warmup0.2_lr0.003/20251014_080342.log
+2025-10-14 08:03:42,337 [INFO ]  [PID] 1408573
+2025-10-14 08:03:42,337 [INFO ]  ================== Model Architecture=================
+2025-10-14 08:03:42,337 [INFO ]  NeRV(
+  (encoder): PositionEncoding()
+  (decoder): ModuleList(
+    (0): Conv2d(160, 1160, kernel_size=(1, 1), stride=(1, 1))
+    (1): NeRVBlock(
+      (conv): Sequential(
+        (0): Conv2d(145, 1800, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): PixelShuffle(upscale_factor=5)
+      )
+      (norm): Identity()
+      (act): GELU(approximate='none')
+    )
+    (2): NeRVBlock(
+      (conv): Sequential(
+        (0): Conv2d(72, 576, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): PixelShuffle(upscale_factor=4)
+      )
+      (norm): Identity()
+      (act): GELU(approximate='none')
+    )
+    (3): NeRVBlock(
+      (conv): Sequential(
+        (0): Conv2d(36, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): PixelShuffle(upscale_factor=4)
+      )
+      (norm): Identity()
+      (act): GELU(approximate='none')
+    )
+    (4-5): 2 x NeRVBlock(
+      (conv): Sequential(
+        (0): Conv2d(24, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): PixelShuffle(upscale_factor=2)
+      )
+      (norm): Identity()
+      (act): GELU(approximate='none')
+    )
+  )
+  (head_layer): Conv2d(24, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+)
+2025-10-14 08:03:42,337 [INFO ]  Encoder_0.0M_Decoder_3.08M_Total_3.08M
+2025-10-14 08:03:42,337 [INFO ]  => loading checkpoint 'results/NeRV_Bunny_1280x640/Bunny_e300_b1_lr0.0005_l2/Encoder_0.0M_Decoder_3.08M_Total_3.08M/epoch300.pth'
+2025-10-14 08:03:42,352 [INFO ]  =======================Full-precision model========================
+2025-10-14 08:03:42,954 [INFO ]  [2025/10/14 08:03:42], Eval at Step [1/132], FPS 3.1, PSNR 32.02, MS-SSIM 0.9513
+2025-10-14 08:03:43,883 [INFO ]  [2025/10/14 08:03:43], Eval at Step [51/132], FPS 107.1, PSNR 31.46, MS-SSIM 0.9437
+2025-10-14 08:03:44,897 [INFO ]  [2025/10/14 08:03:44], Eval at Step [101/132], FPS 160.4, PSNR 32.7, MS-SSIM 0.9556
+2025-10-14 08:03:45,528 [INFO ]  [2025/10/14 08:03:45], Eval at Step [132/132], FPS 182.0, PSNR 33.25, MS-SSIM 0.9604
+2025-10-14 08:03:45,665 [INFO ]  Evaluation ... 
+ 2025_10_14_08_03_42 Results for checkpoint: results/NeRV_Bunny_1280x640/Bunny_e300_b1_lr0.0005_l2/Encoder_0.0M_Decoder_3.08M_Total_3.08M/epoch300.pth
+best_pred_seen_psnr: 33.25 | best_pred_seen_ssim: 0.9604 | best_pred_unseen_psnr: 0.0 | best_pred_unseen_ssim: 0.0 | 
+2025-10-14 08:03:45,668 [INFO ]  quantized model architecture: QuantModel(
+  (model): NeRV(
+    (encoder): PositionEncoding()
+    (decoder): ModuleList(
+      (0): QuantModule(
+        160, 1160, kernel_size=(1, 1), stride=(1, 1)
+        (weight_quantizer): UniformAffineQuantizer(bit=6, scale_method=max, symmetric=False, channel_wise=True,)
+        (bias_quantizer): UniformAffineQuantizer(bit=6, scale_method=max, symmetric=False, channel_wise=True,)
+      )
+      (1): QuantNeRVBlock(
+        (conv): QuantModule(
+          145, 1800, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+          (weight_quantizer): UniformAffineQuantizer(bit=5, scale_method=max, symmetric=False, channel_wise=True,)
+          (bias_quantizer): UniformAffineQuantizer(bit=5, scale_method=max, symmetric=False, channel_wise=True,)
+        )
+        (pixelshuffle): PixelShuffle(upscale_factor=5)
+        (act): GELU(approximate='none')
+      )
+      (2): QuantNeRVBlock(
+        (conv): QuantModule(
+          72, 576, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+          (weight_quantizer): UniformAffineQuantizer(bit=4, scale_method=max, symmetric=False, channel_wise=True,)
+          (bias_quantizer): UniformAffineQuantizer(bit=4, scale_method=max, symmetric=False, channel_wise=True,)
+        )
+        (pixelshuffle): PixelShuffle(upscale_factor=4)
+        (act): GELU(approximate='none')
+      )
+      (3): QuantNeRVBlock(
+        (conv): QuantModule(
+          36, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+          (weight_quantizer): UniformAffineQuantizer(bit=5, scale_method=max, symmetric=False, channel_wise=True,)
+          (bias_quantizer): UniformAffineQuantizer(bit=5, scale_method=max, symmetric=False, channel_wise=True,)
+        )
+        (pixelshuffle): PixelShuffle(upscale_factor=4)
+        (act): GELU(approximate='none')
+      )
+      (4): QuantNeRVBlock(
+        (conv): QuantModule(
+          24, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+          (weight_quantizer): UniformAffineQuantizer(bit=5, scale_method=max, symmetric=False, channel_wise=True,)
+          (bias_quantizer): UniformAffineQuantizer(bit=5, scale_method=max, symmetric=False, channel_wise=True,)
+        )
+        (pixelshuffle): PixelShuffle(upscale_factor=2)
+        (act): GELU(approximate='none')
+      )
+      (5): QuantNeRVBlock(
+        (conv): QuantModule(
+          24, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+          (weight_quantizer): UniformAffineQuantizer(bit=6, scale_method=max, symmetric=False, channel_wise=True,)
+          (bias_quantizer): UniformAffineQuantizer(bit=6, scale_method=max, symmetric=False, channel_wise=True,)
+        )
+        (pixelshuffle): PixelShuffle(upscale_factor=2)
+        (act): GELU(approximate='none')
+      )
+    )
+    (head_layer): QuantModule(
+      24, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+      (weight_quantizer): UniformAffineQuantizer(bit=6, scale_method=max, symmetric=False, channel_wise=True,)
+      (bias_quantizer): UniformAffineQuantizer(bit=6, scale_method=max, symmetric=False, channel_wise=True,)
+    )
+  )
+)
+2025-10-14 08:03:45,669 [INFO ]  input embedding shape: torch.Size([132, 160, 1, 1])
+2025-10-14 08:03:45,669 [INFO ]  torch.Size([2, 160, 1, 1])
+2025-10-14 08:03:47,305 [INFO ]  Init time: 1.6356828212738037
+2025-10-14 08:03:47,305 [INFO ]  =======================Close quantization model========================
+2025-10-14 08:03:47,482 [INFO ]  [2025/10/14 08:03:47], Eval at Step [1/132], FPS 261.0, PSNR 32.02, MS-SSIM 0.9513
+2025-10-14 08:03:47,982 [INFO ]  [2025/10/14 08:03:47], Eval at Step [51/132], FPS 450.8, PSNR 31.46, MS-SSIM 0.9437
+2025-10-14 08:03:48,552 [INFO ]  [2025/10/14 08:03:48], Eval at Step [101/132], FPS 439.8, PSNR 32.7, MS-SSIM 0.9556
+2025-10-14 08:03:48,886 [INFO ]  [2025/10/14 08:03:48], Eval at Step [132/132], FPS 433.3, PSNR 33.25, MS-SSIM 0.9604
+2025-10-14 08:03:48,974 [INFO ]  Evaluation ... 
+ 2025_10_14_08_03_48 
+best_pred_seen_psnr: 33.25 | best_pred_seen_ssim: 0.9604 | best_pred_unseen_psnr: 0.0 | best_pred_unseen_ssim: 0.0 | 
+2025-10-14 08:03:48,974 [INFO ]  =======================Weight quantization model w/o opt========================
+2025-10-14 08:03:49,120 [INFO ]  [2025/10/14 08:03:49], Eval at Step [1/132], FPS 183.0, PSNR 29.22, MS-SSIM 0.9165
+2025-10-14 08:03:49,913 [INFO ]  [2025/10/14 08:03:49], Eval at Step [51/132], FPS 257.9, PSNR 29.3, MS-SSIM 0.9169
+2025-10-14 08:03:51,014 [INFO ]  [2025/10/14 08:03:51], Eval at Step [101/132], FPS 242.5, PSNR 29.86, MS-SSIM 0.9281
+2025-10-14 08:03:51,766 [INFO ]  [2025/10/14 08:03:51], Eval at Step [132/132], FPS 238.6, PSNR 30.01, MS-SSIM 0.9313
+2025-10-14 08:03:51,870 [INFO ]  Evaluation ... 
+ 2025_10_14_08_03_51 
+best_pred_seen_psnr: 30.01 | best_pred_seen_ssim: 0.9313 | best_pred_unseen_psnr: 0.0 | best_pred_unseen_ssim: 0.0 | 
+2025-10-14 08:03:51,870 [INFO ]  [PID] 1408573
+2025-10-14 08:03:51,870 [INFO ]  ======================= Hyper Parameters =======================
+2025-10-14 08:03:51,870 [INFO ]  param init: max
+2025-10-14 08:03:51,870 [INFO ]  channel wise: True
+2025-10-14 08:03:51,870 [INFO ]  seed: 903
+2025-10-14 08:03:51,870 [INFO ]  iterations: 21000
+2025-10-14 08:03:51,870 [INFO ]  batch_size: 2
+2025-10-14 08:03:51,870 [INFO ]  loss weight: 0.01
+2025-10-14 08:03:51,870 [INFO ]  input drop rate: 1.0
+2025-10-14 08:03:51,870 [INFO ]  average bit-width: 4.946213722986429
+2025-10-14 08:03:51,870 [INFO ]  ========================== nerv ==========================
+2025-10-14 08:03:51,870 [INFO ]  begin training in cuda:0
+2025-10-14 08:04:05,157 [INFO ]  Total loss:	0.0021 (rec:0.0021, round:0.0000)	b=0.00	count=500
+2025-10-14 08:04:17,448 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,449 [INFO ]  init time: 0.0012860298156738281
+2025-10-14 08:04:17,450 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,450 [INFO ]  init time: 0.00017333030700683594
+2025-10-14 08:04:17,450 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,450 [INFO ]  init time: 0.00015807151794433594
+2025-10-14 08:04:17,451 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,451 [INFO ]  init time: 0.00016188621520996094
+2025-10-14 08:04:17,451 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,451 [INFO ]  init time: 0.000152587890625
+2025-10-14 08:04:17,452 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,452 [INFO ]  init time: 0.0001556873321533203
+2025-10-14 08:04:17,452 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,452 [INFO ]  init time: 0.00015497207641601562
+2025-10-14 08:04:17,453 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,453 [INFO ]  init time: 0.00016617774963378906
+2025-10-14 08:04:17,453 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,453 [INFO ]  init time: 0.00019788742065429688
+2025-10-14 08:04:17,454 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,454 [INFO ]  init time: 0.00016045570373535156
+2025-10-14 08:04:17,454 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,454 [INFO ]  init time: 0.00015854835510253906
+2025-10-14 08:04:17,455 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,455 [INFO ]  init time: 0.0002048015594482422
+2025-10-14 08:04:17,455 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,455 [INFO ]  init time: 0.0001571178436279297
+2025-10-14 08:04:17,456 [INFO ]  Init alpha to be FP32
+2025-10-14 08:04:17,456 [INFO ]  init time: 0.00015020370483398438
+2025-10-14 08:04:31,643 [INFO ]  Total loss:	0.0015 (rec:0.0015, round:0.0000)	b=0.00	count=500
+2025-10-14 08:04:45,353 [INFO ]  Total loss:	0.0009 (rec:0.0009, round:0.0000)	b=0.00	count=1000
+2025-10-14 08:05:03,351 [INFO ]  Total loss:	0.0008 (rec:0.0008, round:0.0000)	b=0.00	count=1500
+2025-10-14 08:05:18,913 [INFO ]  Total loss:	0.0018 (rec:0.0018, round:0.0000)	b=0.00	count=2000
+2025-10-14 08:05:32,674 [INFO ]  Total loss:	0.0009 (rec:0.0009, round:0.0000)	b=0.00	count=2500
+2025-10-14 08:05:46,675 [INFO ]  Total loss:	0.0017 (rec:0.0017, round:0.0000)	b=0.00	count=3000
+2025-10-14 08:06:00,507 [INFO ]  Total loss:	0.0009 (rec:0.0009, round:0.0000)	b=0.00	count=3500
+2025-10-14 08:06:13,958 [INFO ]  Total loss:	0.0018 (rec:0.0018, round:0.0000)	b=0.00	count=4000
+2025-10-14 08:06:28,350 [INFO ]  Total loss:	11265.1465 (rec:0.0013, round:11265.1455)	b=19.68	count=4500
+2025-10-14 08:06:42,599 [INFO ]  Total loss:	10240.3926 (rec:0.0017, round:10240.3906)	b=19.14	count=5000
+2025-10-14 08:06:58,707 [INFO ]  Total loss:	9680.5088 (rec:0.0017, round:9680.5068)	b=18.61	count=5500
+2025-10-14 08:07:13,278 [INFO ]  Total loss:	9230.2168 (rec:0.0017, round:9230.2148)	b=18.07	count=6000
+2025-10-14 08:07:30,400 [INFO ]  Total loss:	8821.5205 (rec:0.0026, round:8821.5176)	b=17.54	count=6500
+2025-10-14 08:07:46,848 [INFO ]  Total loss:	8428.1777 (rec:0.0017, round:8428.1758)	b=17.00	count=7000
+2025-10-14 08:08:01,865 [INFO ]  Total loss:	8041.8809 (rec:0.0016, round:8041.8794)	b=16.46	count=7500
+2025-10-14 08:08:16,808 [INFO ]  Total loss:	7655.9907 (rec:0.0012, round:7655.9897)	b=15.93	count=8000
+2025-10-14 08:08:31,861 [INFO ]  Total loss:	7267.5161 (rec:0.0010, round:7267.5151)	b=15.39	count=8500
+2025-10-14 08:08:47,305 [INFO ]  Total loss:	6872.3813 (rec:0.0026, round:6872.3789)	b=14.86	count=9000
+2025-10-14 08:09:04,439 [INFO ]  Total loss:	6471.4048 (rec:0.0015, round:6471.4033)	b=14.32	count=9500
+2025-10-14 08:09:19,993 [INFO ]  Total loss:	6062.3770 (rec:0.0016, round:6062.3755)	b=13.79	count=10000
+2025-10-14 08:09:36,481 [INFO ]  Total loss:	5647.2344 (rec:0.0011, round:5647.2334)	b=13.25	count=10500
+2025-10-14 08:09:51,593 [INFO ]  Total loss:	5229.9907 (rec:0.0014, round:5229.9893)	b=12.71	count=11000
+2025-10-14 08:10:07,595 [INFO ]  Total loss:	4802.3047 (rec:0.0016, round:4802.3032)	b=12.18	count=11500
+2025-10-14 08:10:23,419 [INFO ]  Total loss:	4371.9131 (rec:0.0017, round:4371.9116)	b=11.64	count=12000
+2025-10-14 08:10:39,474 [INFO ]  Total loss:	3939.1716 (rec:0.0009, round:3939.1707)	b=11.11	count=12500
+2025-10-14 08:10:54,988 [INFO ]  Total loss:	3512.4495 (rec:0.0018, round:3512.4478)	b=10.57	count=13000
+2025-10-14 08:11:10,124 [INFO ]  Total loss:	3084.8367 (rec:0.0018, round:3084.8347)	b=10.04	count=13500
+2025-10-14 08:11:25,688 [INFO ]  Total loss:	2668.3933 (rec:0.0016, round:2668.3918)	b=9.50	count=14000
+2025-10-14 08:11:42,328 [INFO ]  Total loss:	2262.9448 (rec:0.0020, round:2262.9429)	b=8.96	count=14500
+2025-10-14 08:11:58,777 [INFO ]  Total loss:	1879.4320 (rec:0.0012, round:1879.4308)	b=8.43	count=15000
+2025-10-14 08:12:14,249 [INFO ]  Total loss:	1515.6101 (rec:0.0009, round:1515.6093)	b=7.89	count=15500
+2025-10-14 08:12:29,188 [INFO ]  Total loss:	1174.4769 (rec:0.0022, round:1174.4747)	b=7.36	count=16000
+2025-10-14 08:12:44,842 [INFO ]  Total loss:	869.8786 (rec:0.0018, round:869.8768)	b=6.82	count=16500
+2025-10-14 08:12:59,755 [INFO ]  Total loss:	596.8278 (rec:0.0025, round:596.8253)	b=6.29	count=17000
+2025-10-14 08:13:14,859 [INFO ]  Total loss:	368.8541 (rec:0.0015, round:368.8525)	b=5.75	count=17500
+2025-10-14 08:13:30,239 [INFO ]  Total loss:	192.6180 (rec:0.0009, round:192.6171)	b=5.21	count=18000
+2025-10-14 08:13:45,328 [INFO ]  Total loss:	75.5888 (rec:0.0024, round:75.5864)	b=4.68	count=18500
+2025-10-14 08:14:00,036 [INFO ]  Total loss:	17.7509 (rec:0.0021, round:17.7487)	b=4.14	count=19000
+2025-10-14 08:14:15,324 [INFO ]  Total loss:	1.3257 (rec:0.0018, round:1.3239)	b=3.61	count=19500
+2025-10-14 08:14:29,192 [INFO ]  Training complete in: 0:10:37.321883
+2025-10-14 08:14:29,193 [INFO ]  =======================Weight quantization model w/ opt========================
+2025-10-14 08:14:29,379 [INFO ]  [2025/10/14 08:14:29], Eval at Step [1/132], FPS 93.1, PSNR 31.64, MS-SSIM 0.9467
+2025-10-14 08:14:30,366 [INFO ]  [2025/10/14 08:14:30], Eval at Step [51/132], FPS 209.6, PSNR 31.11, MS-SSIM 0.939
+2025-10-14 08:14:30,899 [INFO ]  [2025/10/14 08:14:30], Eval at Step [101/132], FPS 226.3, PSNR 32.34, MS-SSIM 0.9518
+2025-10-14 08:14:31,223 [INFO ]  [2025/10/14 08:14:31], Eval at Step [132/132], FPS 232.2, PSNR 32.87, MS-SSIM 0.9569
+2025-10-14 08:14:31,728 [INFO ]  Evaluation ... 
+ 2025_10_14_08_14_29 
+best_pred_seen_psnr: 32.87 | best_pred_seen_ssim: 0.9569 | best_pred_unseen_psnr: 0.0 | best_pred_unseen_ssim: 0.0 | 
+2025-10-14 08:14:31,728 [INFO ]  save quantized model in results/NeRV_Bunny_1280x640/Bunny_e300_b1_lr0.0005_l2/Encoder_0.0M_Decoder_3.08M_Total_3.08M/network-wise_calib/hadamard-False_max-init_batch2_CW_weight0.01_brange20-2_warmup0.2_lr0.003

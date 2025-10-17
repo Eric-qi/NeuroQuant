@@ -1,0 +1,29 @@
+
+# dataset
+crop_h: 640
+crop_w: 1280
+
+
+# encoder
+diff_enc: False
+base: 1.25
+level: 80
+
+# decoder
+channel_reduce: 2
+channel_lbound: 24
+dec_in_channel: 145  # change for different model size
+dec_kernels: [3, 3, 3, 3, 3]
+dec_strides: [5, 4, 4, 2, 2]
+dec_norm: none
+dec_acts: gelu
+out_bias: tanh
+
+
+# train
+loss: l2
+epoch: 300
+workers: 4
+eval_freq: 30
+batch_size: 1
+learning_rate: 0.0005

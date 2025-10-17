@@ -1,0 +1,32 @@
+2025-10-14 04:53:58,278 [INFO ]  Logging file is results/NeRV_Bunny_1280x640/Bunny_e300_b1_lr0.0005_l2/Encoder_0.0M_Decoder_3.08M_Total_3.08M/sensitivity-omega_max-init_batch2_CW/20251014_045358.log
+2025-10-14 04:53:58,279 [INFO ]  => loading checkpoint 'results/NeRV_Bunny_1280x640/Bunny_e300_b1_lr0.0005_l2/Encoder_0.0M_Decoder_3.08M_Total_3.08M/epoch300.pth'
+2025-10-14 04:53:59,212 [INFO ]  =======================Full-precision model========================
+2025-10-14 04:53:59,821 [INFO ]  [2025/10/14 04:53:59], Eval at Step [1/66], FPS 3.3, PSNR 33.46, MS-SSIM 0.9604
+2025-10-14 04:54:00,760 [INFO ]  [2025/10/14 04:54:00], Eval at Step [51/66], FPS 91.5, PSNR 33.32, MS-SSIM 0.961
+2025-10-14 04:54:01,218 [INFO ]  [2025/10/14 04:54:01], Eval at Step [66/66], FPS 102.4, PSNR 33.25, MS-SSIM 0.9604
+2025-10-14 04:54:01,296 [INFO ]  Evaluation ... 
+ 2025_10_14_04_53_59 Results for checkpoint: results/NeRV_Bunny_1280x640/Bunny_e300_b1_lr0.0005_l2/Encoder_0.0M_Decoder_3.08M_Total_3.08M/epoch300.pth
+best_pred_seen_psnr: 33.25 | best_pred_seen_ssim: 0.9604 | best_pred_unseen_psnr: 0.0 | best_pred_unseen_ssim: 0.0 | 
+2025-10-14 04:54:04,169 [INFO ]  [candidate1: [5, 6, 3, 4, 5, 4, 3]] Average Quantization Bit-Width:	5.4730
+2025-10-14 04:54:18,394 [INFO ]  [0-th layer] 4.556e-05
+2025-10-14 04:54:18,395 [INFO ]  [1-th layer] 2.511e-05
+2025-10-14 04:54:18,395 [INFO ]  [2-th layer] 3.824e-02
+2025-10-14 04:54:18,395 [INFO ]  [3-th layer] 4.256e-03
+2025-10-14 04:54:18,395 [INFO ]  [4-th layer] 1.247e-04
+2025-10-14 04:54:18,396 [INFO ]  [5-th layer] 3.087e-04
+2025-10-14 04:54:18,396 [INFO ]  [6-th layer] 5.230e-03
+2025-10-14 04:54:18,396 [INFO ]  [candidate1: [5, 6, 3, 4, 5, 4, 3]] The omega sensitivity score =	4.823e-02
+2025-10-14 04:54:21,359 [INFO ]  [candidate2: [6, 5, 5, 6, 7, 6, 7]] Average Quantization Bit-Width:	5.1219
+2025-10-14 04:54:35,204 [INFO ]  [0-th layer] 1.162e-05
+2025-10-14 04:54:35,259 [INFO ]  [1-th layer] 1.309e-04
+2025-10-14 04:54:35,260 [INFO ]  [2-th layer] 2.050e-03
+2025-10-14 04:54:35,260 [INFO ]  [3-th layer] 2.515e-04
+2025-10-14 04:54:35,260 [INFO ]  [4-th layer] 3.400e-06
+2025-10-14 04:54:35,260 [INFO ]  [5-th layer] 2.206e-05
+2025-10-14 04:54:35,260 [INFO ]  [6-th layer] 1.261e-05
+2025-10-14 04:54:35,261 [INFO ]  [candidate2: [6, 5, 5, 6, 7, 6, 7]] The omega sensitivity score =	2.482e-03
+2025-10-14 04:54:35,261 [INFO ]  ============================================================
+2025-10-14 04:54:35,261 [INFO ]  ✅ Best Candidate: candidate2
+2025-10-14 04:54:35,261 [INFO ]  ✅ Bit Configuration: [6, 5, 5, 6, 7, 6, 7]
+2025-10-14 04:54:35,261 [INFO ]  ✅ Minimum Score: 2.4821e-03
+2025-10-14 04:54:35,261 [INFO ]  ============================================================

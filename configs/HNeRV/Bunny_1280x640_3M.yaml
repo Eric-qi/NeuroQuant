@@ -1,0 +1,30 @@
+
+# dataset
+crop_h: 640
+crop_w: 1280
+
+
+# encoder
+diff_enc: False
+stage_block: 1
+enc_strides: [5, 4, 4, 2, 2]
+enc_channel: [64, 64, 64, 64, 16]
+
+# decoder
+channel_reduce: 1.2
+channel_lbound: 12
+dec_in_channel: 92 # change for different model size
+dec_kernels: [1, 3, 5, 5, 5]
+dec_strides: [5, 4, 4, 2, 2]
+dec_norm: none
+dec_acts: gelu
+out_bias: tanh
+
+
+# train
+loss: l2
+epoch: 300
+workers: 4
+eval_freq: 30
+batch_size: 1
+learning_rate: 0.0005
